@@ -1,0 +1,283 @@
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+html{
+  box-sizing: inherit;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body{
+  margin: 0;
+}
+img{
+  max-width: 100%;
+}
+main {
+  margin-block: 100px;
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-image: url('./images/fondo.jpg');
+  background-size: cover;
+  background-position: bottom center;    
+
+  & .fondo{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+
+    display: grid;
+    place-content: center;
+  }
+  
+  & .content {
+    max-width: 50%;
+    margin-inline: auto;
+    color: white;
+  }
+
+  & h1 {
+    margin: 0;
+  }
+}
+
+.tech {
+  width: 100%;
+  padding-block: 20px;
+  background-color: rgb(34, 34, 34);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  overflow-x: auto;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 15%,
+    #000 85%,
+    transparent 100%
+  );
+
+  & span {
+    display: inline-block;
+    padding-block: 5px;
+    padding-inline: 10px;
+    border: 1px solid rgb(184, 184, 184);
+    border-radius: 10px;
+    color: rgb(184, 184, 184);
+    font-weight: bold;
+  }
+  
+}
+
+.slider {
+  background-color: lightgrey;
+  margin-block: 2rem;
+  padding-block: 1rem;  
+  overflow: hidden;
+
+  & .container {
+    display: flex;    
+    gap: 10px;
+    width: fit-content;
+
+    transform: translateX(-100%);
+    animation: move linear 10s infinite;
+
+    & svg{
+      width: 50px;
+      height: 50px;      
+    }
+  }
+}
+.slider2 .container{
+  animation: move linear 10s infinite reverse;
+}
+
+@keyframes move {
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+/********************************************************************************************
+      PROBANDO ANIMACIONES CON EL SCROLL
+***********************************************/
+
+/************************ SCROLL WATCHER ***********************/
+.scroll-watcher{
+  position: fixed;
+  top: 0;
+  left: 0;  
+  height: 5px;
+  background-color: rgb(58, 140, 187);
+  /* animation: scrolling 3s linear 3 forwards; */
+  animation-name: scrolling;
+  animation-timeline: scroll();
+  /* con esta linea cambiamos la linea del tiempo enves de segundos a el scroll de la pantalla 
+    scroll() default y
+    scroll(inline)
+    scroll(block)
+    scroll(y)
+    scroll(x)
+  */
+}
+
+@keyframes scrolling {
+  from{
+    width: 0%;
+  }
+  to{
+    width: 100%;
+  }
+}
+
+/************************ VIEW IMAGES ***********************/
+
+/* Usaremos esta animacion */
+@keyframes fade-in {
+  from {
+    transform: scale(.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Por defecto las animacinoes con view se toma o la animacion 
+comienza desde que la imagen entro al viewport y finaliza cuando 
+salio de el (viewport)*/
+
+section img {
+  animation-name: fade-in;
+  animation-timeline: view();
+}
+/* 
+Tambien podemos mandar parametros al view( param1 param2)
+param1 -> sera que tamaño a partir del inicio del viewport + el tamaño que coloquemos finalizara la animacion - osea cuanto avancemos a partir de arriba
+param2 -> sera que tamaño a partir del final del viewport + el tamaño que coloquemos comenzara la animacion - cuando avanzara a partir de abajo */
+section img {  
+  /*con esto le indicamos
+  a partir de abajo cuando hayamos pasado 10px entonces comienza la animacion
+  y cuando a partir del inicio haya pasado el 70vh del viewport entonces termina */
+  animation-timeline: view(70vh 10px);
+}
+
+
+/* 
+Tambien tenemos dos maneras que nos simplifican de mejor manera
+param1 -> sera que tamaño a partir del inicio del viewport + el tamaño que coloquemos finalizara la animacion - osea cuanto avancemos a partir de arriba
+param2 -> sera que tamaño a partir del final del viewport + el tamaño que coloquemos comenzara la animacion - cuando avanzara a partir de abajo */
+section img {  
+  /*con esto le indicamos
+  a partir de abajo cuando hayamos pasado 10px entonces comienza la animacion
+  y cuando a partir del inicio haya pasado el 70vh del viewport entonces termina */
+  animation-timeline: view();
+  animation-range-start: 10px;
+  animation-range-end: 70vh;
+}
+
+/*
+Tambien tenemos otro valor que es cover
+que indicara tan pronto la imagen entre al viewport
+*/
+section img {    
+  animation-timeline: view();
+  animation-range-start: cover;
+  animation-range-end: 70vh;
+}
+
+/*-> tambien existe contain
+Pero este indica que la animacion iniciara cuando toda la imagen
+ya haya entrado en el viewport entoncecs comienza la animacion
+en esta caso no nos sirve pero podria ser interesante
+animation-range-start: contain;
+*/
+
+/*-> tambien existe entry
+Pero este indica que la animacion iniciara cuando la imagen
+haya entrado en el viewport entoncecs comienza la animacion
+y finaliza cuando la imagen completa se muestra
+animation-range: entry;
+*/
+
+section img {    
+  animation-timeline: view();
+  animation-range: entry;
+}
+
+/*-> tambien existe exit
+Pero este indica que la animacion iniciara cuando la imagen
+haya empezado a salir del viewport entoncecs comienza la animacion
+y finaliza cuando la imagen completa sale
+animation-range: exit;
+*/
+
+section img {    
+  animation-timeline: view();
+  animation-range: exit;
+}
+
+
+/*-> tambien existe cover
+Pero este indica que la animacion iniciara cuando la imagen
+haya empezado a entrar al viewport entoncecs comienza la animacion
+y finaliza cuando la imagen completa sale del viewport
+animation-range: exit;
+*/
+
+section img {    
+  animation-timeline: view();
+  animation-range: cover;
+}
+
+
+/************************ SCROLL X ***********************/
+@keyframes bg-shift {
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: blue
+  }
+}
+
+.tech {
+  animation: bg-shift linear;
+  animation-timeline: scroll(inline self);
+}
+
+.tech-reverse {
+  animation-direction: reverse;
+}
+
+/************************ SCROLL VIEW en el hero ***********************/
+@keyframes hero-image {
+   50%,100%{
+    opacity: 0;
+    scale: 1.5;
+  }
+}
+
+.hero {
+  animation: hero-image linear;
+  animation-timeline: view();
+  animation-range: exit;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.content {
+  animation: fade-out linear;
+  animation-timeline: view();
+  animation-range: exit -300px;
+}

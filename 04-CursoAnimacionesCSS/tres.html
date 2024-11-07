@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imágenes de Picsum</title>
+    <style>
+      body {
+        background-color: #020202;
+        margin: 0;
+        width: 100%;
+      }
+      .image-section {
+        max-width: 100%;
+      }
+      .image-grid {
+        max-width: 100%;
+        columns: 3;
+        padding: 16px 32px;
+        column-gap: 1rem;
+      }
+      .image-grid img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        flex-grow: 1;
+
+        animation: reveal linear both;
+        /* view lo que nos permite esque solo sea cuando este visible */
+        animation-timeline: view();
+        /* cuando haya entrado 20% sera el inicio y el final sera en el 30% */
+        animation-range: entry 20% cover 40%;
+      }
+      h1 {
+        margin: 0;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        margin: 0;
+        max-width: 100%;
+        position: sticky;
+        top: 0;
+        text-transform: uppercase;
+        z-index: 10;
+
+        animation: enhance-header linear both;
+        animation-timeline: scroll(root block);
+        /* tambien le podemos poner un rango de la animacion para que no espere al 100% del scroll */
+        animation-range: 0 200px;
+      }
+
+      @keyframes enhance-header {
+        to {
+          background-color: rgba(255, 255, 255, 0.4);
+          font-size: 16px;
+          color: black;
+          backdrop-filter: blur(5px);
+        }
+      }
+
+      @keyframes reveal {
+        from {
+          opacity: 0;
+          translate: 0 500px;
+          scale: .5;
+        }
+        to {
+          opacity: 1;
+          translate: 0 0px;
+          scale: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section id="image-section">
+      <h1>Galería de Imágenes</h1>
+      <div class="image-grid" id="image-grid">
+        <img
+          src="https://fastly.picsum.photos/id/775/200/300.jpg?hmac=nko360AK314QqqXl8HbvoKqB5EoQuRQHGQ1pDRmSn0c"
+        /><img
+          src="https://fastly.picsum.photos/id/1036/200/300.jpg?hmac=VF4u-vITiP0ezQiSbE3UBvxHDFf8ZqJDycaAIoffsCg"
+        /><img
+          src="https://fastly.picsum.photos/id/539/200/300.jpg?hmac=anJssHN1m53jBatiVAldD8gSdk_3w_5WHOCNCFvGFkk"
+        /><img
+          src="https://fastly.picsum.photos/id/1004/200/300.jpg?hmac=U8xLjv1wDsnhRH90oqnEvk2hvspq7UPzpU8Z9TtIxZM"
+        /><img
+          src="https://fastly.picsum.photos/id/184/200/300.jpg?hmac=dCgm4a8do6DWvjUWcFvft3Kd1srf1f_TyIZoWGrgu48"
+        /><img
+          src="https://fastly.picsum.photos/id/378/200/300.jpg?hmac=j3b_pCH-0kwk0RstB5_LzJ2hw4H53kPLf6v5M-D3FaI"
+        /><img
+          src="https://fastly.picsum.photos/id/102/200/300.jpg?hmac=nMR8Al8ea36mJZJbJNFVaddoG8aP4gUCDiEm4r6PUbk"
+        /><img
+          src="https://fastly.picsum.photos/id/928/200/300.jpg?hmac=0vBcHV9dVfFTsvcFDn8PRUQiOaH72_2aaKnmlU1PHWk"
+        /><img
+          src="https://fastly.picsum.photos/id/484/200/300.jpg?hmac=LJo8oIcz2tZ-i0B07bwzZT4WiREwRUYU5Rdl67Chww4"
+        /><img
+          src="https://fastly.picsum.photos/id/124/200/300.jpg?hmac=nYVSpzq7GaVkXrTk1whDiPbZdNRgtpJJXZJjvmUtFp0"
+        /><img
+          src="https://fastly.picsum.photos/id/334/200/300.jpg?hmac=mY7moKpyBD1N0PF_abyW5_eUHxm9jV4JxZWPnxY7x3Q"
+        /><img
+          src="https://fastly.picsum.photos/id/944/200/300.jpg?hmac=7n5IlapvjzzLSNeQqn4V2syM31KgmM1E9uyKQYNTz_g"
+        /><img
+          src="https://fastly.picsum.photos/id/216/200/300.jpg?hmac=c3OXbiUxWPMgwnaFpX8ZAfBL5TZzWjnof6mb4OwuSPs"
+        /><img
+          src="https://fastly.picsum.photos/id/1012/200/300.jpg?hmac=KU5TJQJkcv2lK_5lVNCie4evqxUOfFGp0Qsv2gQZo5k"
+        /><img
+          src="https://fastly.picsum.photos/id/448/200/300.jpg?hmac=9a1pqR60H2xWN80jPWfmdVkRII-wEQZceiSHpJSZnE4"
+        />
+      </div>
+    </section>
+
+    <script>
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   const imageGrid = document.getElementById("image-grid");
+
+      //   for (let i = 0; i < 15; i++) {
+      //     fetch("https://picsum.photos/200/300")
+      //       .then((response) => {
+      //         const img = document.createElement("img");
+      //         img.src = response.url;
+      //         imageGrid.appendChild(img);
+      //       })
+      //       .catch((error) =>
+      //         console.error("Error al obtener la imagen:", error)
+      //       );
+      //   }
+      // });
+    </script>
+  </body>
+</html>

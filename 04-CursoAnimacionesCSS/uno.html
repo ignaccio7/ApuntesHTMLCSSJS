@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animaciones 1</title>
+  <style>
+
+    body{
+      display: grid;
+      place-content: center;
+      min-height: 100vh;
+    }
+
+    /* En css tenemos 2 formas de animar un elemento las animaciones y las transiciones 
+      * Las transiciones en css se puede cambiar un elemento de un estado inicial a un estado objetivo
+      cuando ya tenemos 2 estados podemos hacer una transicion
+    */
+    .pulser {
+      width: 30px;
+      height: 30px;
+      background-color: #09f;
+      border-radius: 100%;
+      /* duracion */
+      transition-duration: 2s;
+      /* propiedades a animar */
+      transition-property: scale, background;
+      /* aceleracion */
+      transition-timing-function: linear;
+      transition-timing-function: ease-in; 
+      transition-timing-function: ease-out;
+      /* tambien le podemos indicar cuantos pasos tiene que hacer para hacer la aniamcion */
+      transition-timing-function: steps(5);
+      /* tambien existe un metodo para animar la curva de animacion con 4 parametros x1,y1,x2,y2  
+      esto lo podemos ver en las herramientas del navegador en el css del timing function al darle click a ese stilo*/
+      transition-timing-function: cubic-bezier(1,-0.32, 0, 0.78);
+      /* para especificar cuanto debe esperar para animar */
+      transition-delay: 200ms;
+      transition-delay: 2s;
+
+      /* la forma corta para escribir esto es hay diferentes pero la mas tipica
+       propiedad duracion aceleracion delay */
+      transition: background 300ms ease-in 500ms,
+        scale 500ms ease-in-out;
+
+      /* para tener 1 animacion en el estado final y otra en la inicial
+      */
+      transition: all 250ms ease-in; /* de estado final a inicial */
+    }
+
+    .pulser:hover{
+      scale:2;
+      background-color: red;
+      box-shadow: 0 0 10px red;
+      transition: all 1000ms ease-out; /* de estado inicial a final */
+    }
+
+    /* POR TEMAS DE ACCESIBILIDAD AVECES ES BUENO DESACTIVAR LAS ANIMACIONES SEGUN LA PREFERENCIA DEL USUARIO */
+    @media (prefers-reduced-motion: reduce) {
+      .pulser {
+        transition: none;
+      }
+    }
+
+    /* Ahora hablando de las animaciones en la que vamos a crear una secuencia
+    de estados de la animacion y se animara y podra ser independientemente de la interaccion 
+    con el usuario */
+
+    .pulser2 {
+      width: 30px;
+      height: 30px;
+      background-color: #09f;
+      border-radius: 100%;
+      /* animation: move;
+      animation-duration: 3s; */
+      position: relative;
+    }
+
+    .pulser2::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #09f;
+      border-radius: 50%;
+      z-index: -1;
+
+      animation-name: pulse;
+      animation-duration: 2s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 5;
+      animation-iteration-count: infinite;
+      animation-delay: 3s;
+    }
+
+    @keyframes move {
+      /* estado inicial de la animacion */
+      from {
+        transform: translateY(0px);
+      }
+      /* estado final de la animacion */
+      to {
+        transform: translateY(100px);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        scale: 2;
+        opacity: 40%;
+      }
+
+      100% {
+        opacity: .6;
+      }
+      
+    }
+
+  </style>
+</head>
+<body>
+  <div class="pulser" ></div>
+  <br><br><br><br><br>
+  <div class="pulser2" ></div>
+</body>
+</html>

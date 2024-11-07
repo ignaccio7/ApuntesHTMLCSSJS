@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animacion con scroll - Spiderman</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;    
+        margin: 0;    
+      }
+      main{
+        padding: 1rem;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #cc0000;
+      }
+      p {
+        margin-bottom: 20px;
+      }
+
+      #progress {
+        position: fixed;
+        top: 0;
+        width:0%;
+        background-color: #cc0000;
+        height: 5px;
+        /*  Para animar la barra de progreso
+        le indicamos la animacion que queremos utilizar
+        le decimos que queremos que sea automatico ya que no puede depender del tiempo sino del scroll
+        y le indicamos la aceleracion linear */
+        animation: progress-grow auto linear;
+        /* para cambiar la linea del tiempo de nuestra animacion  */
+        /* le indicamos el scroll del usuario y le tenemos que indicar
+        el elemento del cual queremos escuchar el scroll y que scroll el vertical u horizontal */
+        animation-timeline: scroll(root block);
+      }
+
+      @keyframes progress-grow {
+        from {
+          width: 0%;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="progress"></div>
+
+    <main>
+      <h1>Spiderman: El Héroe de Nueva York</h1>
+      <p>
+        Spiderman, también conocido como el Hombre Araña, es uno de los
+        superhéroes más icónicos y queridos de Marvel Comics. Creado por el
+        escritor Stan Lee y el artista Steve Ditko, Spiderman hizo su primera
+        aparición en "Amazing Fantasy #15" en 1962.
+      </p>
+
+      <h2>El Origen de Spiderman</h2>
+      <p>
+        Peter Parker, un joven estudiante de secundaria, fue mordido por una
+        araña radioactiva que le otorgó habilidades sobrehumanas. Con una
+        fuerza, agilidad y sentidos mejorados, así como la capacidad de trepar
+        paredes y disparar telarañas, Peter decidió usar sus nuevos poderes para
+        luchar contra el crimen en la ciudad de Nueva York.
+      </p>
+
+      <h2>Responsabilidad y Deber</h2>
+      <p>
+        Tras la trágica muerte de su tío Ben, Peter adoptó el lema: "Un gran
+        poder conlleva una gran responsabilidad". Este principio ha guiado sus
+        acciones como Spiderman, dedicándose a proteger a los ciudadanos de
+        Nueva York de diversas amenazas.
+      </p>
+
+      <h3>El Trabajo de Spiderman en Nueva York</h3>
+      <p>
+        Spiderman patrulla las calles de Nueva York, desde los rascacielos de
+        Manhattan hasta los barrios más modestos de Queens, su hogar. Utiliza
+        sus habilidades para detener a ladrones, rescatar a personas en peligro
+        y enfrentarse a supervillanos que amenazan la paz de la ciudad.
+      </p>
+
+      <h2>Los Villanos de Spiderman</h2>
+      <p>
+        A lo largo de los años, Spiderman ha enfrentado a una impresionante
+        galería de villanos. Algunos de los más notables incluyen:
+      </p>
+      <ul>
+        <li>
+          <strong>El Duende Verde:</strong> Norman Osborn, un industrial
+          corrupto que se convierte en el temible Duende Verde, es uno de los
+          enemigos más peligrosos de Spiderman.
+        </li>
+        <li>
+          <strong>Doctor Octopus:</strong> Otto Octavius, un científico con
+          tentáculos mecánicos, ha sido una constante amenaza para Spiderman.
+        </li>
+        <li>
+          <strong>Venom:</strong> Eddie Brock, unido a un simbionte alienígena,
+          se convierte en Venom, un adversario con poderes similares a los de
+          Spiderman.
+        </li>
+        <li>
+          <strong>El Buitre:</strong> Adrian Toomes, un ingeniero que crea un
+          traje de vuelo con alas, se convierte en un ladrón aéreo conocido como
+          el Buitre.
+        </li>
+      </ul>
+
+      <h2>Aliados de Spiderman</h2>
+      <p>
+        Spiderman no está solo en su lucha contra el crimen. A lo largo de los
+        años, ha formado alianzas con varios héroes y ha sido miembro de equipos
+        como:
+      </p>
+      <ul>
+        <li>
+          <strong>Los Vengadores:</strong> El equipo de superhéroes más poderoso
+          de la Tierra, con quienes Spiderman ha trabajado en numerosas
+          ocasiones.
+        </li>
+        <li>
+          <strong>Los 4 Fantásticos:</strong> Spiderman ha colaborado con este
+          cuarteto de héroes en diversas aventuras.
+        </li>
+        <li>
+          <strong>Daredevil:</strong> El vigilante ciego de Hell's Kitchen ha
+          sido tanto un aliado como un amigo para Spiderman.
+        </li>
+        <li>
+          <strong>Gata Negra:</strong> Felicia Hardy, una ladrona experta con
+          habilidades felinas, ha sido una aliada ocasional y un interés
+          amoroso.
+        </li>
+      </ul>
+
+      <h2>La Vida de Peter Parker</h2>
+      <p>
+        Balancear su vida como Spiderman y como Peter Parker es un desafío
+        constante. Peter debe enfrentar las dificultades de la vida cotidiana,
+        como el trabajo, las relaciones y los estudios, mientras mantiene su
+        identidad secreta y protege a sus seres queridos.
+      </p>
+
+      <h3>Trabajo y Estudios</h3>
+      <p>
+        Peter ha trabajado como fotógrafo para el Daily Bugle, vendiendo fotos
+        de Spiderman a J. Jonah Jameson, el editor del periódico, quien
+        curiosamente es uno de los mayores críticos de Spiderman. Además, Peter
+        ha continuado su educación, obteniendo títulos en ciencias y trabajando
+        como científico.
+      </p>
+
+      <h3>Relaciones Personales</h3>
+      <p>
+        Las relaciones personales de Peter han sido complicadas debido a su
+        doble vida. Ha tenido romances notables con Gwen Stacy y Mary Jane
+        Watson. Su tía May es uno de los pilares más importantes de su vida,
+        brindándole apoyo y amor incondicional.
+      </p>
+
+      <h2>El Legado de Spiderman</h2>
+      <p>
+        Spiderman ha dejado una marca indeleble en la cultura popular. Su
+        historia de superación, sacrificio y heroísmo resuena con millones de
+        fans alrededor del mundo. Además, ha inspirado numerosas adaptaciones en
+        cine, televisión y videojuegos.
+      </p>
+
+      <h3>Adaptaciones Cinematográficas</h3>
+      <p>
+        El personaje ha sido interpretado en la gran pantalla por varios
+        actores, incluyendo a Tobey Maguire, Andrew Garfield y Tom Holland. Cada
+        una de estas interpretaciones ha aportado algo único al legado de
+        Spiderman.
+      </p>
+
+      <h3>Series de Televisión y Videojuegos</h3>
+      <p>
+        Spiderman ha sido protagonista de múltiples series animadas y de acción
+        en vivo. También ha sido el héroe central en una gran cantidad de
+        videojuegos, permitiendo a los fans experimentar la emoción de ser
+        Spiderman.
+      </p>
+
+      <h2>Conclusión</h2>
+      <p>
+        Spiderman es más que un simple superhéroe; es un símbolo de
+        responsabilidad, perseverancia y humanidad. Su compromiso con la
+        justicia y su amor por Nueva York lo convierten en un verdadero héroe,
+        no solo en los cómics, sino en los corazones de sus admiradores.
+      </p>
+    </main>
+  </body>
+</html>
